@@ -47,18 +47,23 @@
 ## Autovalores
 
 - Dar alguna condición para afirmar que tenemos una base de autovectores.
-- Qué son los valores singulares?
 - Algún método para encontrar el autovalor más grande de una matriz.
 - Qué es el radio espectral?
-- Hay algun caso donde A tenga base de autovectores seguro?
+- Hay algun caso donde A tenga base de autovectores skeguro?
 - Si yo tengo que encontrar el segundo autovalor dominante como hago?
 - Cuantos autovalores tiene una matriz
 - Como son los autovalores de una matriz? (mencionar la multiplicidad)
 - Para cada autovalor hay un autovector, entonces tengo n autovectores?
 - Cómo puedo encontrar el radio espectral.
+ 
+- Metodo de la potencia, que condiciones tiene para aplicarse?
+- Qué condiciones deben valer para método de la potencia.
+- Qué condiciones son necesarias para que el método de la potencia converja?
+- Condiciones del método de la potencia
 
 ## SVD
 
+- Qué son los valores singulares?
 - SVD, no me acuerdo qué pero explicación en general
 - Que es SVD
 - Como sabes que se pueden conseguir los autovalores de SVD
@@ -66,14 +71,10 @@
 ## Iterativos
 
 - Matrices edd, q características tienen? Tienen alguna relacion con los métodos iterativos vistos?
-- Metodo de la potencia, que condiciones tiene para aplicarse?
 - Qué tiene que pasar para la convergencia de métodos iterativos.
-- Qué condiciones deben valer para método de la potencia.
-- Qué condiciones son necesarias para que el método de la potencia converja?
 - Cuándo convergen los metodos iterativos? Condiciones necesarias y suficientes.
 - Que es un metodo exacto? (Cant finita de pasos llega al resultado)
 
-- Condiciones del método de la potencia
 - Características de algún método iterativo que te sirva si A es sdp
 - Definición de convergencia
 
