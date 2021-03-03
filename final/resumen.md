@@ -193,3 +193,116 @@ vez. Estos se llaman tambien **splines**
 
   ![](img/interpolacion/int-cub-seg.png)
   ![](img/interpolacion/int-cub-seg-graph.png)
+
+  > **Error comun de final**: Pedir algo no quiere decir que se vaya a cumplir,
+  > se cumple porque el sistema es edd.
+
+## Integración
+
+Nos enfocamos en los metodos de **cuadratura numerica**, que es un esquema
+generan en donde la integral se aproxima mediante una combinacion de valores de
+la funcion en un conjunto de datos.
+
+$$\int_a^b f(x)\ dx \approx \sum_{i=0}^n f(x_i)$$
+
+Por ejemplo, mediante el poly interpolante
+
+![](img/integracion/poly.png)
+
+Los $a_i$ son las integrales de los $L_{ni}(x)$, y el error que cometemos es la
+integral de la formula del error
+
+### Un intervalo
+
+Los metodos varian en cual es el grado del poly interpolante
+
+- **Grado 1: Regla de trapecios**
+
+  ![](img/integracion/trapecios.png)
+
+  Formula que surge de considerar el poly de grado 1, donde los puntos
+  considerados son los extremos del intervalo.
+
+  > Se puede demostrar eso del error, pero isa no entra en detalles.
+
+  Si a la funcion le podemos encontrar una cota de la derivada segunda en el
+  intervalo $[a, b]$, podemos acotar el error cometido al calcular la integral
+  de esta manera.
+
+  ![](img/integracion/trapecios-graph.png)
+
+  Otra forma de ver la formula de la integral es el area del trapecio
+
+- **Grado 2: Regla de Simpson**
+
+  Puntos: extremo, y ademas uno extra (del medio)
+
+  ![](img/integracion/simpson.png)
+
+  $x_0, x_2$ extremos, y $x_1$ del medio.
+
+  ![](img/integracion/simpson-2.png)
+
+  ![](img/integracion/simpson-graph.png)
+
+  El area determinada por la curva del interpolante es la aproximacion.
+
+### Compuestas
+
+Hasta ahora esto era en un solo intervalo. Pero usando esta idea, se puede
+dividr a un intervalo en intervalos mas pequeños, y en cada uno aplicar
+trapecios o simpson. Estas son las reglas **compuestas**, la integral la
+aproximamos por la suma de todas las aproximaciones. Ahora entonces la integral
+es la suma de los intervalos.
+
+Es basicamente sumas de riemann
+
+- **Reglas compuestas: Trapecios**
+  
+  ![](img/integracion/comp-trapecios.png)
+
+  El error es la suma de errores de los intervalitos (no entra en detalles para
+  ver de donde viene, se puede ver de la bib.)
+
+  ![](img/integracion/comp-trapecios-graph.png)
+
+- **Reglas compuestas: Simpson**
+
+  En cada intervalito hay 3 puntos
+
+  ![](img/integracion/comp-simpson.png)k
+
+  ![](img/integracion/comp-simpson-graph.png)
+
+### Reglas adaptativas
+
+La idea parece muy apropiada, y sugiere que a mayor cantidad de intervalos mejor
+va a ser la integral. Pero esto es a costa de un costo mayor, porque requiere
+mas evaluaciones de la funcion.
+
+Si hacemos simpson en una funcion, por ej.
+
+![](img/integracion/adap-1.png)
+
+Observamos que del lado izquierdo alcanza con la subdivision que tenemos, sin
+embargo del lado derecho la particion da una aprox buena pero no lo suficiente.
+Convendria tener un intervalo mas chico. Agregamos solo mas en esas zonas
+
+![](img/integracion/adap-2.png)
+
+De esta manera obtenemos una mejor aproximacion. En este caso, hay que tener
+algun tipo de regla **adaptativa** que diga que del lado izquierdo no hace falta
+que divida mas, pero no del lado derecho.
+
+Y como se haria eso para simpson? El algoritmo seria algo asi como partir en 2
+con simpson, y seguir aplicando en cada mitad recursivamente, cortando cuando el
+error en el intervalo es parecido al de la suma de los errores de los intervalos
+partidos.
+
+Al principio se define un $\epsilon$, y en cada particion se divide por dos. Si
+es menor al epsilon, no hace falta seguir. Si es mayor, partimos en dos
+devuelta y asi.
+
+De esta forma se va *adaptando* la cantidad de particiones.
+
+## Ceros de funciones
