@@ -122,6 +122,7 @@
 - Que problema tiene la expresion del polinomio de lagrange?
 - Unicidad del polinomio interpolante, es unico?
 - Quiero resolver un sistema con splines, cubicos, ponele que con frontera sujeta. Siempre tengo solución? Por qué?
+- Por que los splines cubicos siempre existen?
 
 ## Integracion
 

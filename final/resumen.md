@@ -306,3 +306,255 @@ devuelta y asi.
 De esta forma se va *adaptando* la cantidad de particiones.
 
 ## Ceros de funciones
+
+Nuestro objetivo es dada una funcion $f: \mathbb{R} \to \mathbb{R}$ buscar $x^*$
+tq $f(x^*) = 0$ (raiz de la funcion).
+
+> Dependiendo de la funcion, esto puede ser sencillo o complicado
+
+### Esquema general
+
+Se genera una sucesion que bajo ciertas condiciones converge, y el limite es una
+raiz de la funcion. Sucesion $\{x_k\}_0^\infty$ tal que bajo ciertas
+condiciones,
+
+$$\lim_{k\to\infty}{x_k = x^*} \text{ con } f(x^*) = 0$$
+
+Los metodos varian segun como la generan y las condiciones de convergencia
+
+### Criterios de comparacion
+
+- Costo computacional
+- Condiciones de convergencia (que props debe cumplir f)
+- **Orden de convergencia**
+
+  Tiene que ver con la velocidad con la cual la suc se
+  acerca al limite. Hay varias maneras de definirla, una es a traves de un
+  limite que relaciona el error de los pasos.
+
+  ![](img/ceros/orden-cvg.png)
+
+  Si el limite existe, mientras mayor sea P, mayor sera la velocidad en la cual
+  converge. P=1 lineal, P=2 cuadratica.
+
+  Otra manera es comparando la sucesion que tenemos con una que tienda a 0. Si
+  logramos que el error del k-esimo sea menor que la que tiende a 0 ($\beta_k$), podremos
+  decir que converge al menos tan rapido como la otra.
+
+  Por ejemplo,
+
+  ![](img/ceros/cvg-ejs.png)
+
+### Metodo de bisección
+
+Se basa en el teorema de Bolzano, que nos dice que si tenemos una funcion
+continua en un intervalo que tiene signos diferentes en el los extremos, seguro
+hay un 0. Usando esto, se puede definir un proceso recursivo para encontrar el
+
+Tomo un punto en el medio. Si es 0, listo. Sino, con algun extremo tiene
+diferente signo y continuo por ese intervalo de la mitad de tamaño.
+
+![](img/ceros/bis-math.png)
+
+![](img/ceros/bis-code.png)
+
+
+Ejemplo:
+
+| Paso                        | Desc                                    |
+| --------------------------- | --------------------------------------- |
+| ![](img/ceros/bis-ej-1.png) | Difiere el signo en el primer intervalo |
+| ![](img/ceros/bis-ej-2.png) | Continuo buscando por ese               |
+
+Considerando la sucesion que tiene los puntos del medio, podemos demostrar que
+converge a una raiz. Sea $f$ continua en $[a, b]$ tq $f(a)f(b) < 0$ (diferente
+signo). La sucesión $\{c_k\}_0^\infty$ definida por el algoritmo de bisección
+siempre converge a una raíz de f.
+
+Orden de convergencia? Por el metodo 1, tiene orden de convergencia de $p = 1$,
+al menos lineal.
+
+El algoritmo tiene un fin, y puede tener distintos criterios de parada:
+
+- Cantidad de iteraciones
+- Que entre dos iteradas sucesivas el error (absoluto o relativo) sea menor a un
+  $\epsilon$.
+- Que el valor de la funcion sea menor a un $\epsilon$
+- Que la medida del intervalo sea menor a $\epsilon$.
+
+Ninguno de estos criterios es certero.
+
+Ventajas y desventajas del metodo:
+
+- \+ Es barato, no pide muchas condiciones. Los requerimientos es solamente que sea continua y que difiera el signo.
+- \+ Siempre converge
+- \+ Puedo ver el error y definir un criterio de parada
+- \- Es muy lento.
+
+### Punto fijo
+
+A veces cuando tengo un problema, puedo querer transformarlo en otro para
+resolverlo, y que ambos sean equivalentes (si tengo sol para uno sera para el
+otro). El problema de ceros de funciones esta relacionado con el de **punto
+fijo**.
+
+**Def** (punto fijo):
+
+La interseccion de la recta y = x con la funcion nos da los puntos fijos.
+
+![](img/ceros/punto-fijo-def.png)
+
+Se puede establecer una relacion entre los puntos fijos de una funcion y los
+ceros de otra. Sean $g(x): \mathbb{R} \to \mathbb{R}$ y $f(x) = g(x) - x$.
+
+$$ x^* \text{ es punto fijo de g sii } x^* \text{ es raiz de } f.$$
+
+Asi como para raices o ceros tenemos el Teo de Bolzano que nos da condiciones
+suficientes, para existencia de punto fijo tenemos el siguiente teorema
+
+![](img/ceros/pf-cond.png)
+
+Ejemplo:
+
+![](img/ceros/pf-ej.png)
+
+#### Algoritmo de Punto Fijo
+
+![](img/ceros/pf-alg.png)
+
+Y por la primer formula del error, como $M < 1$, si hacemos el limite en el
+infinito $x_k \xrightarrow{k\to\infty} x^*$. Entonces la sucesion converge a un
+punto fijo.
+
+Condiciones que tiene que cumplir la función:
+
+- Que vaya de $[a, b]$ en si mismo
+- Su derivada este acotada por una constante menor que 1.
+
+Graficamente, hay una espiral al rededor del punto fijo.
+
+- Convergencia alternante: En una iterada al a izquierda, en la otra a la
+  derecha y asi.
+
+  ![](img/ceros/pf-cvg-alternante.png)
+
+- Convergencia monotona: Una sucesion monotona creciente
+
+  ![](img/ceros/pf-cvg-mono.png)
+
+- Divergencia
+
+  ![](img/ceros/pf-divergencia.png)
+
+Orden de convergencia:
+
+![](img/ceros/pf-ord-cvg.png)
+
+El orden de convergencia coincide con el orden de la primera derivada que no se
+anula en el punto fijo.
+
+> Dem: Con poly de taylor
+
+### Newton
+
+Hay mas de una manera de relacionar punto fijo con ceros, no solamente definir
+$g(x) = f(x) + x$.
+
+> Por ejemplo, si la func al que le queremos encontrar el poly es
+> $f(x) = 4x^3 - 10x^2 + 5x - 17$
+> Podria definir todas estas, y coinciden los puntos fijos con los ceros
+>
+> - $g_1(x) = \frac{17}{4x^2 - 10x + 5}$
+> - $g_2(x) = \frac{-4x^3 + 10x^2 + 17}{5}$
+> - $g_3(x) = \frac{4x^3 + 5x -17}{10x}$
+
+Como el orden de convergencia depende de la cantidad de derivadas que se anulan
+en el punto fijo, convendria tomar una en la que se anulen mas. Buscamos una
+metodologia general que convenga para cualquier funcion.
+
+Para eso, sean $f(x)$ y $x^*$ una raiz. Definimos $g(x) = x - h(x)f(x)$ donde
+$h(x^*) \neq 0$ (No es raiz tambien de h, porque sino no existe la relacion
+entre los puntos fijos de g y los ceros de f). Entonces $x^*$ es punto fijo de
+$g$ sii $x^*$ es raiz de f. Si aplicamos el algoritmo de punto fijo a g, buscamos
+que tenga convergencia cuadratica
+
+- $g'(x^*) = 0 = 1 - h'(x^*)f(x^*) - h(x^*)f'(x^*)$
+
+  Como $f(x^*) - 0$,
+
+  $0 = 1- h(x^*)f'(x^*) \implies h(x^*) = \frac{1}{f'(x^*)}$
+
+  El problema es que h tiene que cumplir condiciones en funcion de $x^*$, el
+  cual no conozco.
+
+  Y una candidata es $h(x) = \frac{1}{f'(x)}$, y entonces $g(x) = x -
+  \frac{f(x)}{f'(x)}$
+
+El **Algoritmo de Newton** entonces no es mas que reemplazar la candidata a g en
+el algoritmo general de punto fijo $x_{k+1} = g(x_k)$
+
+$$x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}$$
+
+![](img/ceros/newton-alg.png)
+
+Pero todo esto es *en el caso de que converga* tengamos orden cuadratico. Y que
+condiciones debe cumplir la f para que converga?
+
+![](img/ceros/newton-cvg.png)
+
+El punto inicial a partir del cual inicio el algoritmo no puede ser cualquiera.
+Tiene que ser *suficientemente cercano* a la raiz para que converga. Esto es lo
+que queda abierto en el algoritmo de Newton.
+
+#### Interpretacion geometrica
+
+Parece que toma el poly de taylor de orden 1, y toma donde se anula como
+aproximacion de la funcion. El lugar en el cual se anula la recta tangente. La
+recta tangente es una buena aproximacion a la funcion cuando estoy
+suficientemente cerca de la raiz.
+
+![](img/ceros/newton-int-geom.png)
+
+![](img/ceros/newton-graph.png)
+
+#### Casos particulares
+
+Hay casos particulares en los que converge, las funciones crecientes y convexas.
+La raiz es unica y converge sin importar de donde se arranque.
+
+### Algoritmo de la secante
+
+La critica principal de Newton es que requiere conocer la derivada primera de la
+funcion, lo cual puede llegar a ser costoso de calcular. Como alternativa, es el
+**algoritmo de secante**. En lugar de considerar un punto toma dos, y considera
+la recta secante en vez de la tangente. El lugar en donde se anula es el proximo
+punto.
+
+![](img/ceros/secante-alg.png)
+
+![](img/ceros/secante-code.png)
+
+![](img/ceros/secante-graph.png)
+
+Un problema es que no necesariamente converge (condiciones en la bibliografia).
+Pero una propiedad que tiene es que perdemos la convergencia cuadratica que daba
+newton, sino que tiene una **superlineal** (mayor que 1 pero menor que 2). (Es
+razonable porque dejamos de pedir la derivada, entonces lo teniamos que pagar en
+algun lado)
+
+### Algoritmo de la regla falsa
+
+Conjuga biseccion con secante. En vez de tomar el punto del medio como con
+biseccion, considera la recta secante y toma el punto en el que se anula.
+
+- Parte de dos puntos donde la funcion difiere en signo. En lugar de tomar el
+  punto intermedio, considera el punto donde la recta secante que pasa por ambos
+  se anula. Eso determina un tercer punto
+- Se aplica la misma regla que en biseccion para decidir con que intervalo
+  continuar el proceso, y asi.
+
+La ventaja que tiene de la secante es que entre dos iteradas sucesivas podemos
+afirmar que se encuentra ahi la raiz (por las propiedades buenas que tenia
+biseccion).
+
+![](img/ceros/falsa-code.png)
