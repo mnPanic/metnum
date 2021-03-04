@@ -9,6 +9,12 @@
 - Qué cuidados tengo que tener al trabajar con aritmética finita. 
 - si yo quiero trabajar con aritmetica finita, cuales son los problemas clasicos con los que me puedo enfrentar?
 
+- 3ra v2021
+  - Como le preguntamos eficientemente a la computadora si un 0 es efectivamente
+    un 0? (|val| < eps)
+  - Que problemas podemos tener con aritmetica finita?
+  - Que metodo vimos que podria sufrir cancelacion catastrofica?
+
 ## EG / LU
 
 - Toda matriz tiene LU? De que depende?
@@ -21,11 +27,21 @@
 - por qué queremos pivotear en EG aunque no tengamos necesidad
 - Pregunto si LU siempre existía. Bajo qué condicion podes asegurar que una matriz cualquiera tiene LU
 
+- 3ra v2021
+  - Que tiene de dieferente la LU de una SDP? Por que calculamos la LU? Que pasa
+    cuando encuentra un 0? ()
+  - Que sabemos sobre los sitemas de ecuaciones? (Cuando tienen sol)
+  - Cuando podemos hacer EG? Que obtenemos de yapa?
+  - Que podes decir de la LU de una SDP? (u diagonal positiva)
+
 ## Normas y numero de condicion
 
 - Qué es el número de condición? Intuición y definición.
 - Qué es el número de condición.
 - qué es el número de condición y cómo se calcula
+
+- Que es el numero de condicion de una matriz? Que interpretacion geometrica
+  hicimos en clase? (3ra v2021)
 
 ## SDP
 
@@ -35,6 +51,8 @@
 - por qué podés preferir LU a Cholesky porque preferir cholesky a LU
 - Que tiene de especial la factorizacion LU en una SDP
 
+- Cholesky, explicar para que sirve (3ra fecha verano 2021, mati)
+
 ## QR
 
 - Toda matriz tiene factorización QR? Es unica? Bajo condiciones lo es?
@@ -42,14 +60,18 @@
 - Existencia de QR
 - Unicidad de QR
 - Metodos para resolver QR
-- la factorizacion qr siempre existe? es única? Nombrar metodos para encontrar la factorizacion qr de una matriz. Solo nombrarlos, no explicarlos
+- la factorizacion qr siempre existe? es única? Nombrar metodos para encontrar
+  la factorizacion qr de una matriz. Solo nombrarlos, no explicarlos
+
+- Nombrar un metodo de construccion. Siempre hay QR? Para que lo podemos usar en
+  la materia? (3ra fecha verano 2021, mati)
 
 ## Autovalores
 
 - Dar alguna condición para afirmar que tenemos una base de autovectores.
 - Algún método para encontrar el autovalor más grande de una matriz.
 - Qué es el radio espectral?
-- Hay algun caso donde A tenga base de autovectores skeguro?
+- Hay algun caso donde A tenga base de autovectores seguro?
 - Si yo tengo que encontrar el segundo autovalor dominante como hago?
 - Cuantos autovalores tiene una matriz
 - Como son los autovalores de una matriz? (mencionar la multiplicidad)
@@ -68,6 +90,12 @@
 - Que es SVD
 - Como sabes que se pueden conseguir los autovalores de SVD
 
+- 3ra v2021
+  - Que es la factorizacion SVD?
+  - Por que puedo asegurar que tengo base de autovectores? (AtA simetrica)
+  - Explicar por que los valores singulares son positivos (AtA y AAt semi DP)
+  - Que es una matriz semejante? Toda matriz es semejante a una diagonal?
+
 ## Iterativos
 
 - Matrices edd, q características tienen? Tienen alguna relacion con los métodos iterativos vistos?
@@ -77,6 +105,12 @@
 
 - Características de algún método iterativo que te sirva si A es sdp
 - Definición de convergencia
+
+- 3ra v2021
+  - Cual es la diferencia principal entre EG y los metodos iterativos? (eg
+    numero finito de pasos, iterativos no)
+  - Que tiene que cumplir la T del esquema de iterativos para converger? Que
+    podemos decir de A para que lo cumplan?
 
 ## CML
 
@@ -99,6 +133,14 @@
 - Qué son los cuadrados mínimos.
 - qué es cuadrados mínimos, existe siempre? es única?
 - dar la explicacion geometrica de cuadrados minimos
+- Qué criterios vimos para aproximar? (cuadrados mínimos) ¿A qué nos referimos con lineales (en cuadrados mínimos)?
+
+- 3ra fecha verano 2021
+  - Por que decimos que CML es lineal? Por que esta bueno en comparacion a no
+    lineales? Tiene sol unica? Por que?
+  - Cual es la diferencia entre interpolar y aproximar?
+  - Cuales son los metodos que vimos para aproximar un conjunto de valores?
+  - Siempre tiene sol CML? Como puedo resolverlo? (nombrar opciones)
 
 ## Interpolacion
 
@@ -123,6 +165,10 @@
 - Unicidad del polinomio interpolante, es unico?
 - Quiero resolver un sistema con splines, cubicos, ponele que con frontera sujeta. Siempre tengo solución? Por qué?
 - Por que los splines cubicos siempre existen?
+
+- Definicion, formula del error, existencia y unicidad. Problema principal
+  (oscila). Splines cubicos, tiene unica sol? Por que? (3ra fecha verano 2021,
+  mati)
 
 ## Integracion
 
@@ -149,6 +195,13 @@
 - Qué condición requiere una funcion para que funcione biseccion
 - Explicame como funciona secante
 - Que problema puede tener secante
+- Orden de convergencia del metodo de la secante
+
+- 3ra fecha v2021
+  - Caracteristicas de cada metodo
+  - Explicar orden de convergencia
+  - Relacion entre Newton y teorema del punto fijo.
+  - Con que criterio se toma la g de newton? (para garantizar cvg orden 2)
 
 ## ??
 
