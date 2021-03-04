@@ -4,6 +4,65 @@
 
 Resumen de temas que no entraron en los parciales
 
+- [Resumen temas teoricos](#resumen-temas-teoricos)
+  - [Aritmética finita](#aritmética-finita)
+  - [Interpolación](#interpolación)
+    - [Error](#error)
+    - [Unicidad](#unicidad)
+    - [Diferencias divididas](#diferencias-divididas)
+    - [Qij](#qij)
+    - [Variando el grado](#variando-el-grado)
+    - [Interpolaciones segmentarias](#interpolaciones-segmentarias)
+  - [Integración](#integración)
+    - [Un intervalo](#un-intervalo)
+    - [Compuestas](#compuestas)
+    - [Reglas adaptativas](#reglas-adaptativas)
+  - [Ceros de funciones](#ceros-de-funciones)
+    - [Esquema general](#esquema-general)
+    - [Criterios de comparacion](#criterios-de-comparacion)
+    - [Metodo de bisección](#metodo-de-bisección)
+    - [Punto fijo](#punto-fijo)
+      - [Algoritmo de Punto Fijo](#algoritmo-de-punto-fijo)
+    - [Newton](#newton)
+      - [Interpretacion geometrica](#interpretacion-geometrica)
+      - [Casos particulares](#casos-particulares)
+    - [Algoritmo de la secante](#algoritmo-de-la-secante)
+    - [Algoritmo de la regla falsa](#algoritmo-de-la-regla-falsa)
+
+## Aritmética finita
+
+Fuente: Clase de Pousa del labo
+
+Operaciones conflictivas, tres principales fuentes de error con aritmetica
+finita entre puntos flotantes
+
+![](img/aritmetica/op.png)
+
+- Sumar numeros de distinta magnitud
+
+  Los grandes siempre ganan. Al sumar un numero real chico con otro grande en
+  valor absoluto, la repr con aritmetica finita puede hacer que el valor chico
+  se pierda.
+
+  ![](img/aritmetica/suma-ej.png)
+
+  El valor x "absorbe" a y. Al sumar muchos numeros, podria pasar que se
+  absorban todos si se hacen de a uno.
+
+- Restar numeros muy similares (**Cancelacion catastrofica**)
+
+  Es la perdida de digitos significativos que produce la resta de dos numeros
+  parecidos.
+
+  ![](img/aritmetica/cc.png)
+
+- Dividir por numeros pequeños o multiplicar por numeros grandes
+
+  Al multiplicar por un numero grande el error de redondeo se amplifica
+  proporcionalmente, y lo mismo al dividir por un numero chico.
+
+  ![](img/aritmetica/div-ej.png)
+
 ## Interpolación
 
 Dado un conjunto de pares ordenados de valores $(x_i, y_i)$ ($x_i$ variable
