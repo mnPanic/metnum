@@ -544,26 +544,76 @@ solución.
 ## Interpolacion
 
 - Quiero dar un polinomio interpolador. Siempre existe? Que algoritmos conoces para calcularlo?
+
+  Si, siempre existe.
+
+  Algoritmos:
+
+  - Lnk: tiene la desventaja que es costoso agregar un nuevo dato
+  - Diferencias divididas
+  - Qij
+
 - Interpolación: existencia, unicidad, problemas cuando el polinomio es de grado muy grande, Interpolación fragmentaria. Objetivo de tener derivadas primera y segunda.
 - El polinomio interpolante trae problemas en N's altos, que otra forma conoces?
+
+  Interpolacion fragmentaria o splines. Interpolar en fragmentos
+
 - Que condiciones se le pide a la interpolacion cubica?
+
+  - Que sea interpolante (2n cond)
+  - Que este bien definida la primera y segunda derivada (n-1 cond)
+  - Sobran condiciones! Condiciones de frontera (n-1 cond)
+
 - Siempre existe la interpolacion cubica con esas condiciones exigidas?
+
+  Si, porque el sistema resultante es edd
+
 - para qué sirve interpolar
+
+  Para predecir valores que no nos dieron
+
 - Diferencia entre interpolar y aproximar
 - Cuándo usaría cuadrados mínimos o interpolación.
+
+  Si hay outliers, no usaria interpolacion
+
 - Aplicaciones de polinomio interpolante.
+
+  Hacer interpolacion
+
 - Diferencia entre polinomio interpolador y splines.
+
+  Los splines usan poly interpoladores en segmentos
+
 - Si siempre puedo usar splines y por qué.
+
+  Si, porque siempre existen y son unicos.
 
 - diferencia entre interpolar polin de lagrange y spline
 - qué es un spline, por qué existe, y las condiciones que deben darse
 - Condiciones que se le piden a splines cúbicos
 - Existencia de splines, está siempre asegurada?
+
+  si
+
 - Orden de convergencia de la rta q diste en la pregunta anterior
 - Que problema tiene la expresion del polinomio de lagrange?
+
+  agregar valores
+
 - Unicidad del polinomio interpolante, es unico?
+
+  si, porque sino interpola a si mismo y por error son iguales
+
 - Quiero resolver un sistema con splines, cubicos, ponele que con frontera sujeta. Siempre tengo solución? Por qué?
+
+  si, y es unica. Porque el sistema resultante de las condiciones es edd
+
+  y edd => no singular => existe sol y es unica.
+
 - Por que los splines cubicos siempre existen?
+
+  Porque el sistema de las condiciones es edd.
 
 - Definicion, formula del error, existencia y unicidad. Problema principal
   (oscila). Splines cubicos, tiene unica sol? Por que? (3ra fecha verano 2021,
