@@ -299,6 +299,8 @@ solución.
 
 - Para cada autovalor hay un autovector, entonces tengo n autovectores?
 
+  A lo sumo n
+
 - 3ra v2021
   - Que es una matriz semejante? Toda matriz es semejante a una diagonal?
 
